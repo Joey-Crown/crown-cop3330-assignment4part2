@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ba7499ea-e4bc-47f1-bcf2-6e265fa00d7a" name="Default Changelist" comment="revised program structure">
+      <change afterPath="$PROJECT_DIR$/.idea/crown-cop3330-assignment4part2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoListApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoListApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/ToDoListMockUp.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/ucf/assignments/ToDoListMockUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/ucf/assignments/ToDoListMockUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/AddItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/AddItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/AddItemMockup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/AddItemMockup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMockUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMockUp.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="UML Sequence" />
+        <option value="JavaFXApplication" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1udjX7ulZzNJeotukJZ5dKLBWYU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultPlantUmlFileTemplate" value="UML Sequence" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.36910996" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\joe\IdeaProjects\crown-cop3330-assignment4\src\main\resources\ucf\assignments" />
+      <recent name="C:\Users\Joe\Documents\Programs\Java\crown-cop3330-assignment4\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Joe\Documents\Programs\Java\crown-cop3330-assignment4\src\main\resources\ucf\assignments" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ToDoListApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../JavaDevelopment/jdk-16.0.1" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="ucf.assignments.ToDoListApplication" />
+      <module name="crown-cop3330-assignment4part2.main" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Joe\Documents\JavaDevelopment\javafx-sdk-16\lib --add-modules javafx.controls,javafx.fxml " />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ucf.assignments.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ToDoListApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ba7499ea-e4bc-47f1-bcf2-6e265fa00d7a" name="Default Changelist" comment="" />
+      <created>1625002398642</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1625002398642</updated>
+      <workItem from="1625002400817" duration="10086000" />
+      <workItem from="1625114679229" duration="27342000" />
+      <workItem from="1625249836413" duration="5353000" />
+      <workItem from="1625269864414" duration="7346000" />
+      <workItem from="1625440234243" duration="821000" />
+      <workItem from="1625441071858" duration="4264000" />
+      <workItem from="1625446461549" duration="17827000" />
+      <workItem from="1625600257408" duration="356000" />
+      <workItem from="1625600640931" duration="7299000" />
+      <workItem from="1625690579163" duration="4537000" />
+      <workItem from="1625695296339" duration="247000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added new classes and FXML file">
+      <created>1625267640171</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1625267640172</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updated Pseudocode for new methods">
+      <created>1625528604650</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1625528604650</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Updates FXML mockup">
+      <created>1625529268585</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1625529268585</updated>
+    </task>
+    <task id="LOCAL-00004" summary="minor changes to program structure">
+      <created>1625529432872</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1625529432872</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added new classes and FXML file" />
+    <MESSAGE value="Updated Pseudocode for new methods" />
+    <MESSAGE value="Updates FXML mockup" />
+    <MESSAGE value="minor changes to program structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes to program structure" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_7_6_2021_2_21_PM_[Default_Changelist]" date="1625595816154" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_6_2021_2_21_PM_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 7/6/2021 2:21 PM [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="build/classes/java/main/ucf/assignments/ToDoList.class" />
+    <option name="AFTER_PATH" value="build/classes/java/main/ucf/assignments/ToDoList.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_6_2021_2_21_PM_[Default_Changelist]/ToDoList.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/classes/java/main/ucf/assignments/ToDoListController.class" />
+    <option name="AFTER_PATH" value="build/classes/java/main/ucf/assignments/ToDoListController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_6_2021_2_21_PM_[Default_Changelist]/ToDoListController.class" />
+  </binary>
+</changelist>

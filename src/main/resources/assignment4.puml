@@ -1,0 +1,77 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class ToDoListApplication {
+    + main(String[]) : void
+    + Start(Stage) : void
+    + close() (?)
+}
+
+class ToDoList {
+    - name : String
+    - itemsList: Map<String, ArrayList<Item>>
+
+    + deleteList() : void
+    + editList() : void
+    + saveListsToFile(ToDoList) : boolean
+    + loadListFromFile()
+    + saveAllLists()
+    + loadAllLists(File)
+}
+
+class Item {
+    - description: String
+    - date : String
+    - completed: boolean
+
+    + getDescription() : String
+    + setDescription(String) : void
+    + getDate() : String
+    + setDate(String) : void
+    + completeItem(int, ArrayList<Item>) : void
+    + removeItem(int, ArrayList<Item>)
+    + editItem(int, String, String, String)
+    + addItem(String, Item) : void
+}
+
+class ToDoListController {
+    model: toDoList
+
+    + displayList(String) : void
+    + addList(ToDoList) : void
+    + initialize() : void
+    + displayCompletedItems(String) : void
+    + displayIncompleteItems(String) : void
+    + newTab() : void
+
+    'GUI event handlers
+    + onNewListClick()
+    + onListViewClick()
+    + onListItemRightClick()
+    + onNewItemClick()
+    + onSaveAsCLick()
+    + onLoadListClick()
+    + onEditItemClick()
+    + deleteItemOnClick()
+    + onAboutAppClick()
+    + onLoadAllListsClick()
+    + onShowCompletedItemsClick()
+    + onShowIncompletedItemsClick()
+
+}
+
+class AddItemController {
+    model : Item
+
+    initialize()
+
+    'GUI event handlers
+    + onAddItemButtonClick() : Item
+}
+
+ToDoList <--* Item
+ToDoListApplication <|-- ToDoList
+ToDoList <--* ToDoListController
+ToDoListApplication <--* ToDoListController
+ToDoListController --- AddItemController
+@enduml
