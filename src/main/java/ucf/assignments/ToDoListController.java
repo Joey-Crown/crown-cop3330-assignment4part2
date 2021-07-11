@@ -17,9 +17,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -126,8 +128,6 @@ public class ToDoListController {
     */
 
 
-
-
     // menu controller
     @FXML public MenuBar menuBar;
 
@@ -180,6 +180,20 @@ public class ToDoListController {
     public static ToDoList visibleToDoList = new ToDoList();
 
     public void initialize() {
+
+        final ContextMenu itemMenu = new ContextMenu();
+        MenuItem completeItemMenu = new MenuItem("Complete Item");
+        itemMenu.getItems().add(completeItemMenu);
+
+    tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+    completeItemMenu.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            Item.completeItem(tableView.getSelectionModel().getSelectedItem());
+            displayAllItems(visibleToDoList);
+        }
+    });
     }
 
     public static Stage secondaryStage = new Stage();

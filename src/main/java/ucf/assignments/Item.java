@@ -52,12 +52,12 @@ public class Item {
 
     // changes value of completed in an Item to true
     // should refresh display so that Item is displayed as red to indicate Item is completed
-    public void completeItem(int pos, ArrayList<Item> items){
-
+    public static void completeItem(Item item){
+        item.completed.set(true);
     }
 
     // takes the index of an item in an arraylist of items to remove the item in that position
-    public void removeItem(int pos, ArrayList<Item> items) {
+    public static void removeItem(int pos, ArrayList<Item> items) {
 
     }
 
