@@ -15,8 +15,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -126,14 +128,6 @@ public class ToDoListController {
 
 
 
-    // adding new list to sidebar
-    @FXML public ListView listView;
-
-
-    public void addList(ToDoList toDoList) {
-        listView.getItems().add(toDoList.name);
-    }
-
     // menu controller
     @FXML public MenuBar menuBar;
 
@@ -149,59 +143,48 @@ public class ToDoListController {
     @FXML public TableView<Item> tableView;
     @FXML public TableColumn<Item, String> itemsView;
     @FXML public TableColumn<String, Item> dateView;
+    @FXML public TableColumn<Item, Boolean> completedView;
 
     // TODO
     // get this working so that clicking on an item in the list view populates that list
-    public void displayList(ToDoList toDoList) {
-        ObservableList<Item> data = FXCollections.observableArrayList(toDoList.listOfItems);
+    public void displayList(ObservableList<Item> data) {
         tableView.setItems(data);
         itemsView.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
         dateView.setCellValueFactory(new PropertyValueFactory<String, Item>("date"));
+        completedView.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, Boolean>, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Item, Boolean> param) {
+                return param.getValue().getCompleted();
+            }
+        });
+        completedView.setCellFactory(CheckBoxTableCell.forTableColumn(completedView));
 
         tableView.setItems(data);
+    }
+
+    public void displayAllItems(ToDoList toDoList) {
+        ObservableList<Item> data = FXCollections.observableArrayList(toDoList.listOfItems);
+        displayList(data);
+    }
+
+    public void displayCompletedItems() {
+        ObservableList<Item> data = FXCollections.observableArrayList();
+    }
+
+    public void displayIncompletedItems() {
+
     }
 
     // Stores the currently selected list
     public static String currentlySelected;
-    public static ToDoList visibleToDoList;
+    public static ToDoList visibleToDoList = new ToDoList();
 
     public void initialize() {
-
-        // opens a dialog that prompts the user to enter the name of a list and then initializes a list with that name
-        TextInputDialog listDialog = new TextInputDialog("Enter name of new list");
-        listDialog.setHeaderText("New List");
-
-        EventHandler<ActionEvent> onNewListClick = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                listDialog.showAndWait();
-                TextField input = listDialog.getEditor();
-                String name = input.getText();
-
-                visibleToDoList = new ToDoList(name);
-                addList(visibleToDoList);
-                displayList(visibleToDoList);
-            }
-        };
-
-        // opens new list dialogue on click
-        newList.setOnAction(onNewListClick);
-
-
-
-        // click item in listView to display items
-        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                currentlySelected = newValue.toString();
-            }
-        });
-
     }
 
     public static Stage secondaryStage = new Stage();
 
-    public void onNewItemClick() {
+    public void onAddItemClick() {
         try {
 
             Parent root = FXMLLoader.load(getClass().getResource("AddItemMockup.fxml"));
@@ -211,7 +194,7 @@ public class ToDoListController {
             secondaryStage.setScene(scene);
             secondaryStage.setTitle("Add New Item");
             secondaryStage.showAndWait();
-            displayList(visibleToDoList);
+            displayAllItems(visibleToDoList);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba7499ea-e4bc-47f1-bcf2-6e265fa00d7a" name="Default Changelist" comment="revised program structure">
-      <change afterPath="$PROJECT_DIR$/.idea/crown-cop3330-assignment4part2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoListApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoListApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ucf/assignments/ToDoListController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/ToDoListMockUp.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/ucf/assignments/ToDoListMockUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/ucf/assignments/ToDoListMockUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/AddItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/AddItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/AddItemMockup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/AddItemMockup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMain.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMain.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMockUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMockUp.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,6 +119,9 @@
       <workItem from="1625600640931" duration="7299000" />
       <workItem from="1625690579163" duration="4537000" />
       <workItem from="1625695296339" duration="247000" />
+      <workItem from="1625695575368" duration="287000" />
+      <workItem from="1625705846026" duration="5709000" />
+      <workItem from="1625956148323" duration="9010000" />
     </task>
     <task id="LOCAL-00001" summary="Added new classes and FXML file">
       <created>1625267640171</created>

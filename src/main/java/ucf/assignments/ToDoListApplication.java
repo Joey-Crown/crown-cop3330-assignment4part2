@@ -51,7 +51,7 @@ public class ToDoListApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("ToDoListMockUp.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("ToDoListMain.fxml"));
 
             Scene scene = new Scene(root);
 

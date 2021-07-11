@@ -1,0 +1,18 @@
+.anchor-pane-main {
+    -fx-background-color: #F7EDE2;
+}
+.anchor-pane-top {
+    -fx-background-color:  #84A59D;
+}
+.anchor-pane-sidebar {
+    -fx-background-color:  #F6BD60;
+}
+
+
+.toggle-button {
+    -fx-background-color: transparent;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #F7EDE2;
+}

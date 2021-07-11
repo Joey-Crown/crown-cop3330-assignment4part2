@@ -58,12 +58,13 @@ public class ToDoList {
      */
 
     ArrayList<Item> listOfItems;
-    String name;
 
-    public ToDoList(String name) {
+    public ToDoList() {
         this.listOfItems = new ArrayList<Item>();
-        listOfItems.add(new Item("default list item", "2021-07-07"));
-        this.name = name;
+    }
+
+    public void clearList() {
+
     }
 
 }

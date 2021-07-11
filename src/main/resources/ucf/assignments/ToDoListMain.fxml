@@ -1,30 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ToDoListController">
    <children>
-      <AnchorPane prefHeight="46.0" prefWidth="720.0" style="-fx-background-color: #84A59D;" />
-      <AnchorPane layoutY="46.0" prefHeight="434.0" prefWidth="60.0" style="-fx-background-color: #F6BD60;">
+      <VBox layoutY="46.0" prefHeight="434.0" prefWidth="60.0" styleClass="anchor-pane-sidebar">
          <children>
-            <VBox layoutX="14.0" layoutY="65.0" prefHeight="434.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="56.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Downloads/icon-1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </VBox>
+      <AnchorPane prefHeight="46.0" prefWidth="720.0" style="-fx-background-color: #84A59D;">
+         <children>
+            <MenuButton layoutX="-1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="59.0" styleClass="toggle-button">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Save List" />
+                <MenuItem mnemonicParsing="false" text="Load List" />
+              </items>
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Downloads/ICON-FILE.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
+         </children></AnchorPane>
+      <AnchorPane layoutX="57.0" layoutY="46.0" prefHeight="434.0" prefWidth="129.0" style="-fx-background-color: #F6BD60;">
+         <children>
+            <VBox layoutX="57.0" prefHeight="434.0" prefWidth="129.0" styleClass="anchor-pane-sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="60.0" prefWidth="137.0" selected="true" text="Home">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sidebar" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" prefHeight="60.0" prefWidth="144.0" text="Completed" toggleGroup="$sidebar" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="60.0" prefWidth="142.0" text="Incompleted" toggleGroup="$sidebar" />
+                  <Button mnemonicParsing="false" onAction="#onAddItemClick" prefHeight="34.0" prefWidth="131.0" text="Add Item">
+                     <VBox.margin>
+                        <Insets top="150.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="131.0" text="Edit Item">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="131.0" text="Clear List">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="60.0" layoutY="46.0" prefHeight="434.0" prefWidth="114.0">
+      <AnchorPane layoutX="185.0" layoutY="46.0" prefHeight="434.0" prefWidth="535.0" styleClass="anchor-pane">
          <children>
-            <VBox layoutX="7.0" prefHeight="434.0" prefWidth="114.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Button" />
-               </children>
-            </VBox>
+            <TableView fx:id="tableView" editable="true" layoutX="101.0" layoutY="66.0" prefHeight="434.0" prefWidth="535.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                  <TableColumn fx:id="completedView" minWidth="0.0" prefWidth="31.0" text="✓" />
+                <TableColumn fx:id="itemsView" prefWidth="389.0" text="Description" />
+                <TableColumn fx:id="dateView" minWidth="0.0" prefWidth="114.0" text="Date" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>

@@ -4,6 +4,8 @@
  */
 package ucf.assignments;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.ArrayList;
@@ -12,14 +14,12 @@ public class Item {
 
     private final SimpleStringProperty description = new SimpleStringProperty("");
     private final SimpleStringProperty date = new SimpleStringProperty("");
-
-    // still need to implement a boolean property for when the item is to be marked as completed
-    //boolean completed;
+    private final BooleanProperty completed = new SimpleBooleanProperty(false);
 
     public Item(String description, String date) {
         setDescription(description);
         setDate(date);
-        // completed = false;
+        setCompleted(true);
     }
 
     // returns the description of an Item Object
@@ -42,9 +42,17 @@ public class Item {
         this.date.set(date);
     }
 
+    public BooleanProperty getCompleted(){
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed.set(completed);
+    }
+
     // changes value of completed in an Item to true
     // should refresh display so that Item is displayed as red to indicate Item is completed
-    public void competeItem(int pos, ArrayList<Item> items){
+    public void completeItem(int pos, ArrayList<Item> items){
 
     }
 
