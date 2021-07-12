@@ -19,7 +19,13 @@ public class Item {
     public Item(String description, String date) {
         setDescription(description);
         setDate(date);
-        setCompleted(true);
+        setCompleted(false);
+    }
+
+    public Item(String description, String date, boolean completed) {
+        setDescription(description);
+        setDate(date);
+        setCompleted(completed);
     }
 
     // returns the description of an Item Object
@@ -53,21 +59,28 @@ public class Item {
     // changes value of completed in an Item to true
     // should refresh display so that Item is displayed as red to indicate Item is completed
     public static void completeItem(Item item){
-        item.completed.set(true);
+
+        if (item.completed.get() == false) {
+            item.completed.set(true);
+        } else {
+            item.completed.set(false);
+        }
     }
 
-    // takes the index of an item in an arraylist of items to remove the item in that position
-    public static void removeItem(int pos, ArrayList<Item> items) {
-
+    // takes the item in an arraylist of items to remove the item in that position
+    public static void removeItem(ArrayList<Item> listOfItems, Item item) {
+        listOfItems.remove(item);
     }
 
     // edits the date and description of an item in the ToDoList
-    // uses the index passed to the function to find it's position in the ArrayList
-    public void editItem(int index, String name, String description, String date) {
-
+    public static void editItem(ToDoList toDoList, Item oldItem, Item newItem) {
+        for (int i = 0; i <toDoList.listOfItems.size(); i++) {
+            if (toDoList.listOfItems.get(i) == oldItem)
+                toDoList.listOfItems.set(i, newItem);
+        }
     }
 
-    // adds Item to the ArrayList<Item> which has a key matching the String provided
+    // adds Item to the ArrayList<Item>
     public static void addItem(ToDoList toDoList, Item item) {
         toDoList.listOfItems.add(item);
     }

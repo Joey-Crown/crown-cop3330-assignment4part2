@@ -18,11 +18,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ToDoListController {
@@ -129,15 +134,9 @@ public class ToDoListController {
 
 
     // menu controller
-    @FXML public MenuBar menuBar;
 
-    @FXML public Menu file;
-    @FXML public MenuItem newList;
-    @FXML public MenuItem editList;
-    @FXML public MenuItem deleteList;
-
-    @FXML public Button confirm;
-    @FXML public TextField inputNewList;
+    @FXML public Button editItemButton;
+    @FXML public Button clearListButton;
 
     // table elements
     @FXML public TableView<Item> tableView;
@@ -145,9 +144,34 @@ public class ToDoListController {
     @FXML public TableColumn<String, Item> dateView;
     @FXML public TableColumn<Item, Boolean> completedView;
 
-    // TODO
-    // get this working so that clicking on an item in the list view populates that list
-    public void displayList(ObservableList<Item> data) {
+    // context menu in tableview elements
+    @FXML public ContextMenu itemMenu;
+    @FXML public MenuItem completeItemMenu;
+    @FXML public MenuItem removeItemMenu;
+
+    // sidebar button elements
+    @FXML public ToggleGroup sidebar;
+    @FXML public ToggleButton homeButton;
+    @FXML public ToggleButton completedItemsButton;
+    @FXML public ToggleButton imcompletedItemsButton;
+
+    // Save menu elements
+    @FXML public MenuItem saveList;
+    @FXML public MenuItem loadList;
+
+
+    public void displayList() {
+        ObservableList<Item> data = FXCollections.observableArrayList();
+        ToggleButton selectedListButton = (ToggleButton) sidebar.getSelectedToggle();
+
+        if (selectedListButton == homeButton) {
+            data = collectAllItems(visibleToDoList);
+        } else if (selectedListButton == completedItemsButton) {
+            data = collectCompletedItems(visibleToDoList);
+        } else if (selectedListButton == imcompletedItemsButton) {
+            data = collectImcompletedItems(visibleToDoList);
+        }
+
         tableView.setItems(data);
         itemsView.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
         dateView.setCellValueFactory(new PropertyValueFactory<String, Item>("date"));
@@ -162,38 +186,123 @@ public class ToDoListController {
         tableView.setItems(data);
     }
 
-    public void displayAllItems(ToDoList toDoList) {
+    public ObservableList<Item> collectAllItems(ToDoList toDoList) {
         ObservableList<Item> data = FXCollections.observableArrayList(toDoList.listOfItems);
-        displayList(data);
+        return data;
     }
 
-    public void displayCompletedItems() {
+    public ObservableList<Item> collectCompletedItems(ToDoList toDoList) {
         ObservableList<Item> data = FXCollections.observableArrayList();
+        for (Item item: visibleToDoList.listOfItems) {
+            if (item.getCompleted().get()) {
+                data.add(item);
+            }
+        }
+        return data;
     }
 
-    public void displayIncompletedItems() {
-
+    public ObservableList<Item> collectImcompletedItems(ToDoList toDoList) {
+        ObservableList<Item> data = FXCollections.observableArrayList();
+        for (Item item: visibleToDoList.listOfItems) {
+            if (!item.getCompleted().get()) {
+                data.add(item);
+            }
+        }
+        return data;
     }
 
-    // Stores the currently selected list
-    public static String currentlySelected;
+    //stores the visible list
     public static ToDoList visibleToDoList = new ToDoList();
+    //stores currently selected item
+    public static Item currentlySelected;
 
     public void initialize() {
 
-        final ContextMenu itemMenu = new ContextMenu();
-        MenuItem completeItemMenu = new MenuItem("Complete Item");
         itemMenu.getItems().add(completeItemMenu);
+        // set selection mode for tableview
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        // disable context menu if tableview has no selection
+        completeItemMenu.disableProperty().bind(tableView.selectionModelProperty().isNull());
 
-    tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Item>() {
+            @Override
+            public void changed(ObservableValue<? extends Item> observable, Item oldValue, Item newValue) {
+                currentlySelected = newValue;
+            }
+        });
 
-    completeItemMenu.setOnAction(new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-            Item.completeItem(tableView.getSelectionModel().getSelectedItem());
-            displayAllItems(visibleToDoList);
-        }
-    });
+        completeItemMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Item.completeItem(tableView.getSelectionModel().getSelectedItem());
+                displayList();
+            }
+        });
+
+        removeItemMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Item.removeItem(visibleToDoList.listOfItems, tableView.getSelectionModel().getSelectedItem());
+                displayList();
+            }
+        });
+
+        // calls displayList whenever a toggle button is clicked
+        sidebar.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                displayList();
+            }
+        });
+
+        // Clear List Button removes all items from the list and displays an empty list
+        clearListButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ToDoList.clearList(visibleToDoList);
+                displayList();
+            }
+        });
+
+        //Alert for errors in saving or loading file
+        Alert fileAlert = new Alert(Alert.AlertType.ERROR);
+        // loading list from file
+        loadList.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                File file = getFileFromFileChooser();
+                if (file != null) {
+                    visibleToDoList = ToDoList.loadListFromFile(file);
+                    if (visibleToDoList != null)  {
+                        displayList();
+                    } else {
+                        fileAlert.show();
+                    }
+                } else {
+                    fileAlert.show();
+                }
+            }
+        });
+
+        TextInputDialog saveFileName = new TextInputDialog();
+        saveFileName.setTitle("Save File");
+        saveFileName.setHeaderText("Enter name of save file");
+        saveFileName.setContentText("List");
+
+        saveList.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                saveFileName.showAndWait();
+                String name = saveFileName.getEditor().getText();
+                File file = getDirectoryFromChooser();
+                if (file != null) {
+                    ToDoList.saveListToFile(file, visibleToDoList, name);
+                } else {
+                    fileAlert.show();
+                }
+            }
+        });
+
     }
 
     public static Stage secondaryStage = new Stage();
@@ -207,12 +316,46 @@ public class ToDoListController {
 
             secondaryStage.setScene(scene);
             secondaryStage.setTitle("Add New Item");
+
             secondaryStage.showAndWait();
-            displayAllItems(visibleToDoList);
+            displayList();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void onEditItemClick() {
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("EditItemWindow.fxml"));
+
+            Scene scene = new Scene(root);
+            secondaryStage.setScene(scene);
+            secondaryStage.setTitle("Edit Item");
+            secondaryStage.showAndWait();
+            displayList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // file chooser that let's you select a json file
+    public File getFileFromFileChooser() {
+        FileChooser findFile = new FileChooser();
+        findFile.setTitle("Select File");
+        findFile.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("JSON", ".json")
+        );
+        return findFile.showOpenDialog(secondaryStage);
+    }
+
+    // directory chooser that let's you select a directory
+    public File getDirectoryFromChooser() {
+        DirectoryChooser findDirectory = new DirectoryChooser();
+        findDirectory.setTitle("Select Directory to Save to");
+        return findDirectory.showDialog(secondaryStage);
     }
 
 

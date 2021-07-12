@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -37,17 +38,20 @@ public class AddItemController {
     @FXML
     public DatePicker dateField;
 
-    @FXML
-    public Button addItemButton;
-
-
     public void onAddItemButtonClick() {
         String itemDescription = descriptionField.getText();
         String itemDate = dateField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        Item newItem = new Item(itemDescription, itemDate);
-        Item.addItem(ToDoListController.visibleToDoList, newItem);
-        ToDoListController.secondaryStage.close();
+        if (itemDescription.length() <= 256 && !itemDescription.isEmpty()) {
+            Item newItem = new Item(itemDescription, itemDate);
+            Item.addItem(ToDoListController.visibleToDoList, newItem);
+            ToDoListController.secondaryStage.close();
+        } else {
+            Dialog notValidInput = new Dialog();
+            notValidInput.setTitle("Invalid Input.");
+            notValidInput.setContentText("Description must be between 1-256 characters.");
+            notValidInput.show();
+        }
     }
 
 

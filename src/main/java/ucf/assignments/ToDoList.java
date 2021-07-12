@@ -4,6 +4,12 @@
  */
 package ucf.assignments;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.*;
+import java.lang.reflect.Array;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,8 +69,53 @@ public class ToDoList {
         this.listOfItems = new ArrayList<Item>();
     }
 
-    public void clearList() {
-
+    public static void clearList(ToDoList toDoList) {
+        for (int i = 0; i < toDoList.listOfItems.size(); i++) {
+            toDoList.listOfItems.remove(i);
+        }
     }
 
+    public static void saveListToFile(File file, ToDoList toDoList, String name) {
+       try {
+
+           String fileName = file.getPath() + "/" + name + ".json";
+           List<Serializer> serializedList = new ArrayList<Serializer>();
+
+           for (Item item: toDoList.listOfItems) {
+               serializedList.add(Serializer.serializeItem(item));
+           }
+           Gson gson = new Gson();
+           String jsonString = gson.toJson(serializedList);
+           FileWriter fileWriter = new FileWriter(file);
+           gson.toJson(serializedList, fileWriter);
+           fileWriter.flush();
+           fileWriter.close();
+       } catch (IOException e) {
+           System.out.println("Error writing to file");
+       }
+    }
+
+    // using Gson to load list from file
+    public static ToDoList loadListFromFile(File file) {
+        try {
+            Gson gson = new Gson();
+
+            Reader readFromFile = Files.newBufferedReader(file.toPath());
+
+            // Gson uses Reader to parse .json file info and create a ProductList object
+            Serializer[] list = gson.fromJson(readFromFile, Serializer[].class);
+
+            ToDoList deserializedToDoList = new ToDoList();
+
+            for (Serializer serialized: list) {
+                Item.addItem(deserializedToDoList, Deserializer.deserializeJson(serialized));
+            }
+
+            return deserializedToDoList;
+
+        } catch (IOException e) {
+            System.out.println("Error reading from file");
+        }
+        return null;
+    }
 }
