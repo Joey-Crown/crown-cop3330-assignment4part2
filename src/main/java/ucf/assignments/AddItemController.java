@@ -38,6 +38,10 @@ public class AddItemController {
     @FXML
     public DatePicker dateField;
 
+
+    // when the "Add Item" button is clicked, it takes the values in the fields
+    // constructs Item based on user input and adds to list
+    // only moves forward with adding item if description is between 1-256 chars
     public void onAddItemButtonClick() {
         String itemDescription = descriptionField.getText();
         String itemDate = dateField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));

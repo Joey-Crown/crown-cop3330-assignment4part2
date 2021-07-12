@@ -12,6 +12,7 @@ public class Serializer {
         this.completed = completed;
     }
 
+    // converts Items into a collection of simple primitives, easier for gson to parse
     public static Serializer serializeItem(Item item) {
         String description = item.getDescription();
         String date = item.getDate();

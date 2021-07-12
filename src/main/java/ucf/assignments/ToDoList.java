@@ -18,49 +18,20 @@ import java.util.Map;
 public class ToDoList {
 
     /*
-    deleteList()
-    takes the name of the list as provided in the ListView and then uses it as a key for the hashmap
-    deletes key entry in the ToDoList hashmap
-    deletes name of list
-    refresh list display
-
-    editListName()
-    takes a ToDoList as a parameter
-    change name variable
-    refresh list
+    clearList()
+    take ToDoList as a parameter
+    iterate through the list removing all items in ToDoList.listofItems
 
     saveListToFile()
-    takes a String as a parameter, uses it as the Map key to get the ArrayList of items
-    Stores key as name for gson format
-    use these variables to create a new ToDoList with th same properties
-    make directory for saved file if it doesn't exist already
-    uses a gson parser to convert ToDoList to a json formatted string
+    Serialize TodoList in order to make it easier for gson to parse it
+    uses a gson parser to convert serialized ToDoList to a json formatted string
     write sting to new file named '~listname~.json
     return boolean true or false for controller method to display an alert of success or failure
 
     loadListFromFile()
     open file explorer to choose file
-    take file name, using split to get the name of file before .json
-    store name as string
-    use gson to parse file into ToDoList object
-    use addList in controller to initialize th list
-    use Display list to show list in GUI
-
-    SaveAllLists()
-    takes Map itemsList
-    use Gson parser to store lists as a json format using class format ArrayList<ToDoList>
-    name parameter can be set as the key for the list by storing all keys in an array
-    I'm not super positive on how to do parsing correctly without having an ArrayList of all ToDoLists
-        (I could us all the keys to get all the items to create a new arraylist<ToDoLists>
-        that duplicates all lists from keys.
-        Using keys as the name parameter and map.get(key) to get the arrayList)
-    creates file directory if one doesn't exist
-
-    LoadAllLists(File)
-    load .json file from file explorer
-    use Gson to parse file into an ArrayList of ToDoLists
-    loop through the ArrayList and use a customer constructor to add all of the info to a HashMap
-    return the ArrayList<ToDoList> to the controller
+    use gson to parse file into ToDoList object using deserializer class methods
+    use displayList in controller to initialize th list
      */
 
     ArrayList<Item> listOfItems;
@@ -77,13 +48,16 @@ public class ToDoList {
 
     public static boolean saveListToFile(File file, ToDoList toDoList, String name) {
        try {
-
+            // takes the user input and makes a filepath with the information
            String fileName = file.getPath() + "/" + name + ".json";
            List<Serializer> serializedList = new ArrayList<Serializer>();
 
+           // loops through ToDoList to produce a lit of serialized items
+           // gson has problems parsing the current Item class so this was necessary
            for (Item item: toDoList.listOfItems) {
                serializedList.add(Serializer.serializeItem(item));
            }
+           // create new gson and write array to file
            Gson gson = new Gson();
            String jsonString = gson.toJson(serializedList);
            FileWriter fileWriter = new FileWriter(file);

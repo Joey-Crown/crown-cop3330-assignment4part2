@@ -16,12 +16,14 @@ public class Item {
     private final SimpleStringProperty date = new SimpleStringProperty("");
     private final BooleanProperty completed = new SimpleBooleanProperty(false);
 
+    // new items use this constructor, as they will be set to incompleted (false)
     public Item(String description, String date) {
         setDescription(description);
         setDate(date);
         setCompleted(false);
     }
 
+    // constructor used for loading items from list
     public Item(String description, String date, boolean completed) {
         setDescription(description);
         setDate(date);
@@ -48,6 +50,8 @@ public class Item {
         this.date.set(date);
     }
 
+    // gets the completion value of the item
+    // true = completed, false = incompleted
     public BooleanProperty getCompleted(){
         return completed;
     }
@@ -56,8 +60,7 @@ public class Item {
         this.completed.set(completed);
     }
 
-    // changes value of completed in an Item to true
-    // should refresh display so that Item is displayed as red to indicate Item is completed
+    // changes value of completed in an Item to true or false, reverses whatever value is given
     public static void completeItem(Item item){
 
         if (item.completed.get() == false) {

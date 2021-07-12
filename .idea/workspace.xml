@@ -4,14 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba7499ea-e4bc-47f1-bcf2-6e265fa00d7a" name="Default Changelist" comment="updated functionality">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ucf/assignments/ItemTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ucf/assignments/SerializerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ucf/assignments/ToDoListTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/list.json" afterDir="false" />
+    <list default="true" id="ba7499ea-e4bc-47f1-bcf2-6e265fa00d7a" name="Default Changelist" comment="Added Images">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/JavaFX.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/JavaF.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/AddItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/AddItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/Deserializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/EditItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/EditItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/Serializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assignment4.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assignment4.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/AddItemMockup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/AddItemWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMain.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMain.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMockUp.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,18 +78,19 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../JavaDevelopment/javafx-sdk-16/lib" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.36910996" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Joe\Documents\Programs\Java\crown-cop3330-assignment4part2\src\main\resources\ucf\assignments\images" />
       <recent name="C:\Users\Joe\Documents\Programs\Java\crown-cop3330-assignment4part2\src\test\resources" />
       <recent name="C:\Users\joe\IdeaProjects\crown-cop3330-assignment4\src\main\resources\ucf\assignments" />
       <recent name="C:\Users\Joe\Documents\Programs\Java\crown-cop3330-assignment4\src\main\resources" />
@@ -96,16 +105,30 @@
       <recent name="ucf.assignments" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ToDoListTest.loadListFromFile">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.ToDoListApplication">
+    <configuration name="ToDoListApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="16" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="ucf.assignments.ToDoListApplication" />
+      <module name="crown-cop3330-assignment4part2.main" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Joe\Documents\JavaDevelopment\javafx-sdk-16\lib --add-modules=javafx.controls" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ucf.assignments.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,27 +160,6 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--tests &quot;ucf.assignments.ItemTest.addItem&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ItemTest.editItem" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ucf.assignments.ItemTest.editItem&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -215,13 +217,20 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.ToDoListApplication" />
+      <item itemvalue="Gradle.ItemTest" />
+      <item itemvalue="Gradle.ItemTest.addItem" />
+      <item itemvalue="Gradle.ToDoListTest.loadListFromFile" />
+      <item itemvalue="Gradle.ToDoListTest.saveListToFile" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ToDoListApplication" />
         <item itemvalue="Gradle.ToDoListTest.loadListFromFile" />
         <item itemvalue="Gradle.ToDoListTest.saveListToFile" />
         <item itemvalue="Gradle.ItemTest" />
         <item itemvalue="Gradle.ItemTest.addItem" />
-        <item itemvalue="Gradle.ItemTest.editItem" />
       </list>
     </recent_temporary>
   </component>
@@ -247,6 +256,7 @@
       <workItem from="1625695575368" duration="287000" />
       <workItem from="1625705846026" duration="5709000" />
       <workItem from="1625956148323" duration="40199000" />
+      <workItem from="1626065409833" duration="3627000" />
     </task>
     <task id="LOCAL-00001" summary="Added new classes and FXML file">
       <created>1625267640171</created>
@@ -290,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626059068422</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added Images">
+      <created>1626065299394</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1626065299394</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +332,8 @@
     <MESSAGE value="minor changes to program structure" />
     <MESSAGE value="updated functions" />
     <MESSAGE value="updated functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated functionality" />
+    <MESSAGE value="Added Images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Images" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

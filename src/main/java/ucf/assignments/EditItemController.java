@@ -16,6 +16,8 @@ public class EditItemController {
     @FXML public Button editItemConfirmButton;
 
 
+    // when the "Edit Item" button is clicked, takes the new values in the fields given by the User
+    // takes the old item, the list, and the new item and passes them to "Item.editItem" to make the changes
     public void onEditItemConfirmButton() {
         String itemDescription = editDescription.getText();
         String itemDate = editDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));

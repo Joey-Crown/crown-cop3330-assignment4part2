@@ -39,24 +39,13 @@ public class ToDoListController {
 
     The class ToDoListApplication contains a breakdown of program structure and how th GUI should be understood
 
-    onListItemRightClick()
-    Right click item in tableView, action opens menu with option 'complete item'
-    changes property in item 'completed' to 'true'
-    call method displayCompletedItem() to change JavaFX text display to red
-    change color of item to red to mark completed
-
-    onSaveAsClick()
-    event listener that takes current collection of ToDoLists being displayed
-    passes lists to gson parser and serializes data into a .json file
-    uses method in class ToDoList 'saveListToFile'
-    display alert upon success indicating file was successfully saved
 
     displayList()
-    takes a name parameter and uses that as a key for the Map itemsList
-    creates an ObservableList variable based on the arraylist of items from the key provided by 'name'
+    creates an ObservableList variable based on the arraylist of items from the key provided by the public ToDoList
     sets the values of the cells in table view to "description" and "date" of a ToDoList object
     set table view using ObservableList
     will need to implement a custom cell value for when 'completed' property of item is set to 'true'
+    checkbox cell column indicates if complete/incomplete
     custom cell value will set that row in TableView to the color red (indicates completed item)
 
     displayCompletedItems()
@@ -82,54 +71,28 @@ public class ToDoListController {
     calls displayList to refresh the TableView with the new Item
 
     onEditItemClick()
-    when user clicks on 'Edit Item' it will take the index of the currently selected item in the ArrayList
-    store the index of the item
-    store the name of the list
-    it opens the same dialog that opens when making a new item, but the text input fields will have the current item properties
-    Gets input from AddItemController which returns Item Object
-    store the input fields as Strings and pass them and the index integer to editItem in class Item
+    when user clicks on 'Edit Item' it will take the selection of the currently selected item in the ArrayList
+    it opens a similar dialog to that which opens when making a new item
+    EditItemController then handles input
     refresh the list display by calling DisplayList with the name of the list
 
-    onNewListClick()
-    when user clicks on menu item 'New List' opens a dialog asking for name of new list
-    dialog shows and waits for user to click okay
-    whatever was in editor gets passed as a name for a new list which then initializes it as an object
-    uses method addList() to display name of list in ListView
-    then calls displayList with new object to display the list with the default item list
 
-    newTab()
-    To be called when a new ToDoList is created or a ToDoList is clicked in theListView
-    creates a new tab
-    call DisplayList to display info in new TableView
-
-    deleteItemOnRightClick()
+    removeItemMenu Event Handler:
     right click on item in table view
-    option pops up in menu 'delete item'
+    option pops up in menu 'remove'
     clicking on it calls method removeItem() in class Item
     calls Display list to display list again without the removed item
 
-    saveListOnClick()
+    saveList EventHandler:
     when user clicks on menu item 'Save List'
-    takes currently selected list from ListView and passes the name to saveListToFile
-    saveListToFile returns boolean true or false depending on success of saving
-    if successful (true) -> display alert "Successfully saved file"
-    if failure (false) -> display alert "Issue saving file to folder"
+    opens dialog asking for name of save file
+    Then opens file chooser so user can choose directory
+    file and list is then passed to ToDoList.SaveListToFile
 
-    onLoadAllListsClick()
-    when user clicks on MenuItem 'Open Lists' it will open a file explorer where the user can
-        select a .json formatted for lists
-    file gets passed to ToDoList.loadAllLists and stores the returned ArrayList
-    loop through the ArrayList<ToDoList> and pass each ToDoList to addList() to initialize them in the ListView
+   loadList EventHandler:
+   opens file chooser that let's user select for .json file
+   passes file to ToDoList.LoadListFromFile
 
-    onListViewClick()
-    When a user clicks on an item in the listview, it will open a new tab with all the items in that list in tableview
-    The strategy will be to duplicate the tab format with the tableview
-    call displayList with the selected item in the listview passing the name of the list
-    displayList uses 'name' to access the hashmap to get the arraylist of items
-
-    onAboutAppClick()
-    in the about section of the MenuBar, when the user clicks on 'About App', it will display an alert window
-    alert window contains information about the app including the app version, date released, and development credits
     */
 
 
@@ -153,13 +116,14 @@ public class ToDoListController {
     @FXML public ToggleGroup sidebar;
     @FXML public ToggleButton homeButton;
     @FXML public ToggleButton completedItemsButton;
-    @FXML public ToggleButton imcompletedItemsButton;
+    @FXML public ToggleButton incompletedItemsButton;
 
     // Save menu elements
     @FXML public MenuItem saveList;
     @FXML public MenuItem loadList;
 
-
+    // generates an observable lit based on what the user has clicked on the sidebar
+    // uses toggle button group to decide what will be displayed on the tableview
     public void displayList() {
         ObservableList<Item> data = FXCollections.observableArrayList();
         ToggleButton selectedListButton = (ToggleButton) sidebar.getSelectedToggle();
@@ -168,13 +132,14 @@ public class ToDoListController {
             data = collectAllItems(visibleToDoList);
         } else if (selectedListButton == completedItemsButton) {
             data = collectCompletedItems(visibleToDoList);
-        } else if (selectedListButton == imcompletedItemsButton) {
-            data = collectImcompletedItems(visibleToDoList);
+        } else if (selectedListButton == incompletedItemsButton) {
+            data = collectIncompletedItems(visibleToDoList);
         }
 
         tableView.setItems(data);
         itemsView.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
         dateView.setCellValueFactory(new PropertyValueFactory<String, Item>("date"));
+        // creates checkbox cell column for visualizing the completeness of each item
         completedView.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Item, Boolean>, ObservableValue<Boolean>>() {
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Item, Boolean> param) {
@@ -186,11 +151,13 @@ public class ToDoListController {
         tableView.setItems(data);
     }
 
+    // stores all items in an observable list
     public ObservableList<Item> collectAllItems(ToDoList toDoList) {
         ObservableList<Item> data = FXCollections.observableArrayList(toDoList.listOfItems);
         return data;
     }
 
+    // takes all items with property 'completed' == true, and stores them in observable list
     public ObservableList<Item> collectCompletedItems(ToDoList toDoList) {
         ObservableList<Item> data = FXCollections.observableArrayList();
         for (Item item: visibleToDoList.listOfItems) {
@@ -201,7 +168,8 @@ public class ToDoListController {
         return data;
     }
 
-    public ObservableList<Item> collectImcompletedItems(ToDoList toDoList) {
+    // takes all items with property 'completed' == false, and stores them in observable list
+    public ObservableList<Item> collectIncompletedItems(ToDoList toDoList) {
         ObservableList<Item> data = FXCollections.observableArrayList();
         for (Item item: visibleToDoList.listOfItems) {
             if (!item.getCompleted().get()) {
@@ -231,6 +199,8 @@ public class ToDoListController {
             }
         });
 
+        // clicking on item 'Complete/Incomplete' in context menu calls completeItem on selected item in tableview
+        // displays changes on tableview
         completeItemMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -239,6 +209,8 @@ public class ToDoListController {
             }
         });
 
+        // clicking on item 'Remove Item' in context menu calls RemoveItem on selected item in tableview
+        // displays changes on tableview
         removeItemMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -289,6 +261,8 @@ public class ToDoListController {
         saveFileName.setHeaderText("Enter name of save file");
         saveFileName.setContentText("List");
 
+        // when menuItem 'Save List' is clicked, opens dialog to get name of file to be saved
+        // then let's user choose directory for saving
         saveList.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -307,10 +281,12 @@ public class ToDoListController {
 
     public static Stage secondaryStage = new Stage();
 
+    // opens new window when "Add Item" button is clicked
+    // AddItemController handles user input
     public void onAddItemClick() {
         try {
 
-            Parent root = FXMLLoader.load(getClass().getResource("AddItemMockup.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AddItemWindow.fxml"));
 
             Scene scene = new Scene(root);
 
@@ -325,6 +301,8 @@ public class ToDoListController {
 
     }
 
+    // opens new window when "Edit Item" button is clicked
+    // EditItemController handles user input
     public void onEditItemClick() {
         try {
 
