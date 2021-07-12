@@ -8,65 +8,79 @@ class ToDoListApplication {
 }
 
 class ToDoList {
-    - name : String
-    - itemsList: Map<String, ArrayList<Item>>
+    - ArrayList : Item
 
-    + deleteList() : void
-    + editList() : void
-    + saveListsToFile(ToDoList) : boolean
-    + loadListFromFile()
-    + saveAllLists()
-    + loadAllLists(File)
+    + clearList() : void
+    + saveListToFile(File, ToDoList, String) : boolean
+    + loadListFromFile(File) : ToDoList
 }
 
 class Item {
-    - description: String
-    - date : String
-    - completed: boolean
+    - description: StringProperty
+    - date : StringProperty
+    - completed: BooleanProperty
 
     + getDescription() : String
     + setDescription(String) : void
     + getDate() : String
     + setDate(String) : void
-    + completeItem(int, ArrayList<Item>) : void
-    + removeItem(int, ArrayList<Item>)
-    + editItem(int, String, String, String)
-    + addItem(String, Item) : void
+    + getCompleted() : BooleanProperty
+    + setCompleted(boolean) :
+    + completeItem(Item) : void
+    + removeItem(ArrayList<Item>, Item) : void
+    + editItem(ToDoList, Item, Item) : void
+    + addItem(ToDoList, Item) : void
 }
 
 class ToDoListController {
     model: toDoList
 
-    + displayList(String) : void
-    + addList(ToDoList) : void
+    + displayList() : void
     + initialize() : void
-    + displayCompletedItems(String) : void
-    + displayIncompleteItems(String) : void
-    + newTab() : void
+    + collectAllItems(ToDolist) : ObservableList
+    + collectCompletedItems(ToDolist) : ObservableList
+    + collectIncompleteItems(ToDolist) : ObservableList
+    + getFileFromFileChooser() : File
+    + getDirectoryFromChooser() : File
 
     'GUI event handlers
-    + onNewListClick()
-    + onListViewClick()
-    + onListItemRightClick()
-    + onNewItemClick()
-    + onSaveAsCLick()
-    + onLoadListClick()
+    + tableview.getSelectionModel()
+    + completeItemMenu
+    + completeItemMenu
+    + removeItemMenu
+    + sidebar (buttons)
+    + clearListButton
+    + loadList
+    + saveList
+    + onAddItemClick()
     + onEditItemClick()
-    + deleteItemOnClick()
-    + onAboutAppClick()
-    + onLoadAllListsClick()
-    + onShowCompletedItemsClick()
-    + onShowIncompletedItemsClick()
 
 }
 
 class AddItemController {
     model : Item
-
-    initialize()
-
     'GUI event handlers
     + onAddItemButtonClick() : Item
+}
+
+class EditItemController {
+    model : Item
+
+    'GUI event handlers
+    + onEditConfirmButton
+}
+
+class Deserializer {
+
+    deserializeJson(Serializer) : Item
+}
+
+class Serializer {
+    description : String
+    date : String
+    completed : boolean
+
+    serializeItem(Item) : Serializer
 }
 
 ToDoList <--* Item
@@ -74,4 +88,7 @@ ToDoListApplication <|-- ToDoList
 ToDoList <--* ToDoListController
 ToDoListApplication <--* ToDoListController
 ToDoListController --- AddItemController
+ToDoListController --- EditItemController
+ToDoList <-- Serializer
+ToDoList <-- Deserializer
 @enduml
