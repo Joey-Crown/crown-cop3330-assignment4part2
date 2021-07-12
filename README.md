@@ -10,9 +10,9 @@ The description can not be longer than 256 characters and must be at least 1 cha
 The date picker let's you choose a date that will be displayed in the YYYY-MM-DD format.
 Press add item and the window will close and your item will be available in the table view within the app.
 
-To complete or mark an item imcompleted, simply right click on the item and a menu will pop up with the option to "Complete/Imcomplete"
+To complete or mark an item incompleted, simply right click on the item and a menu will pop up with the option to "Complete/Imcomplete"
 This menu will also let you remove items from the list by clicking "Remove Item"
-To view only imcompleted/completed items, use the sidebar to click "Completed Items" or "Imcompleted Items"
+To view only incompleted/completed items, use the sidebar to click "Completed Items" or "Imcompleted Items"
 To view all items, simply return to "Home" in the sidebar
 
 To edit an item, click on an item in the table view and then click "Edit Item" in the bottom left corner.
