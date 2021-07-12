@@ -10,6 +10,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,7 +62,11 @@ public class ToDoList {
            // create new gson and write array to file
            Gson gson = new Gson();
            String jsonString = gson.toJson(serializedList);
-           FileWriter fileWriter = new FileWriter(file);
+           // create new file
+           Path filePath = Paths.get(fileName);
+           Files.createFile(filePath);
+           //write to file
+           FileWriter fileWriter = new FileWriter(String.valueOf(filePath));
            gson.toJson(serializedList, fileWriter);
            fileWriter.flush();
            fileWriter.close();

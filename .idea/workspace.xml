@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba7499ea-e4bc-47f1-bcf2-6e265fa00d7a" name="Default Changelist" comment="Added Images">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/JavaFX.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/JavaF.xml" afterDir="false" />
+    <list default="true" id="ba7499ea-e4bc-47f1-bcf2-6e265fa00d7a" name="Default Changelist" comment="Spellcheck">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/AddItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/AddItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/Deserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/EditItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/EditItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/Serializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assignment4.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assignment4.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/AddItemMockup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/AddItemWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMain.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMain.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ToDoListMockUp.fxml" beforeDir="false" />
     </list>
@@ -111,7 +101,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="ucf.assignments.ToDoListApplication" />
       <module name="crown-cop3330-assignment4part2.main" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\Joe\Documents\JavaDevelopment\javafx-sdk-16\lib --add-modules=javafx.controls" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Joe\Documents\JavaDevelopment\javafx-sdk-16\lib --add-modules=javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ucf.assignments.*" />
@@ -256,7 +246,7 @@
       <workItem from="1625695575368" duration="287000" />
       <workItem from="1625705846026" duration="5709000" />
       <workItem from="1625956148323" duration="40199000" />
-      <workItem from="1626065409833" duration="3627000" />
+      <workItem from="1626065409833" duration="5802000" />
     </task>
     <task id="LOCAL-00001" summary="Added new classes and FXML file">
       <created>1625267640171</created>
@@ -307,7 +297,28 @@
       <option name="project" value="LOCAL" />
       <updated>1626065299394</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updated UML">
+      <created>1626069091488</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1626069091489</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Pseudocode">
+      <created>1626069205914</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1626069205914</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Spellcheck">
+      <created>1626069227519</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1626069227519</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +344,21 @@
     <MESSAGE value="updated functions" />
     <MESSAGE value="updated functionality" />
     <MESSAGE value="Added Images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Images" />
+    <MESSAGE value="Updated UML" />
+    <MESSAGE value="Pseudocode" />
+    <MESSAGE value="Spellcheck" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spellcheck" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

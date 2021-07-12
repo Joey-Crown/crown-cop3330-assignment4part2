@@ -1,9 +1,14 @@
 package ucf.assignments;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Serializer {
 
+    @SerializedName("description")
     String description;
+    @SerializedName("date")
     String date;
+    @SerializedName("completed")
     boolean completed;
 
     public Serializer(String description, String date, boolean completed) {
