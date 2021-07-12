@@ -75,7 +75,7 @@ public class ToDoList {
         }
     }
 
-    public static void saveListToFile(File file, ToDoList toDoList, String name) {
+    public static boolean saveListToFile(File file, ToDoList toDoList, String name) {
        try {
 
            String fileName = file.getPath() + "/" + name + ".json";
@@ -90,9 +90,11 @@ public class ToDoList {
            gson.toJson(serializedList, fileWriter);
            fileWriter.flush();
            fileWriter.close();
+           return true;
        } catch (IOException e) {
            System.out.println("Error writing to file");
        }
+       return false;
     }
 
     // using Gson to load list from file

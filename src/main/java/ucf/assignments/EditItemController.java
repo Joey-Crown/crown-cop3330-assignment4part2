@@ -3,6 +3,7 @@ package ucf.assignments;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 
 import java.time.format.DateTimeFormatter;
@@ -18,12 +19,18 @@ public class EditItemController {
     public void onEditItemConfirmButton() {
         String itemDescription = editDescription.getText();
         String itemDate = editDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        if (itemDescription.length() <= 256 && !itemDescription.isEmpty()) {
+            Item oldItem = ToDoListController.currentlySelected;
+            Item newItem = new Item(itemDescription, itemDate, ToDoListController.currentlySelected.getCompleted().get());
 
-        Item oldItem = ToDoListController.currentlySelected;
-        Item newItem = new Item(itemDescription, itemDate, ToDoListController.currentlySelected.getCompleted().get());
-
-        Item.editItem(ToDoListController.visibleToDoList, oldItem, newItem);
-        ToDoListController.secondaryStage.close();
+            Item.editItem(ToDoListController.visibleToDoList, oldItem, newItem);
+            ToDoListController.secondaryStage.close();
+        } else {
+            Dialog notValidInput = new Dialog();
+            notValidInput.setTitle("Invalid Input.");
+            notValidInput.setContentText("Description must be between 1-256 characters.");
+            notValidInput.show();
+        }
     }
 
 }
